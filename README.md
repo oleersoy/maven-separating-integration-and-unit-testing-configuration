@@ -22,7 +22,7 @@ To produce the result Maven takes the property values specified in `profiles/uni
 
 ### Result
 
-A hibernate configuration properties file, `src/target/classes/hibernate.properties` is created containing parameters that are specific to unit testing.
+The hibernate configuration properties file `src/target/classes/hibernate.properties` is created containing unit test specific parameters.
 
 ### Action
 
@@ -34,5 +34,5 @@ To produce the result Maven takes the property values specified in `profiles/int
 
 ### Result
 
-A hibernate configuration properties file, `src/target/classes/hibernate.properties` is created containing parameters that are specific to integration testing.
+The hibernate configuration properties file `src/target/classes/hibernate.properties` is created containing the integration test specific parameters.
 
