@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example.maven</groupId>
+	<artifactId>separating-integration-and-unit-testing-configuration</artifactId>
+	<version>1.0.0</version>
+	<description>Project demos separation of unit testing and integration testing configuration</description>
+
+	<profiles>
+		<profile>
+			<id>unit-test</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- The profiles sub directory that 
+				     contains unit test specific 
+				     configuration values -->
+				<build.profile.id>unit-test</build.profile.id>
+				<skip.integration.tests>true</skip.integration.tests>
+				<skip.unit.tests>false</skip.unit.tests>
+			</properties>
+		</profile>
+		<profile>
+			<id>integration-test</id>
+			<properties>
+				<!-- The profiles sub directory that 
+				     contains unit test specific 
+				     configuration values -->
+				<build.profile.id>integration-test</build.profile.id>
+				<skip.integration.tests>false</skip.integration.tests>
+				<skip.unit.tests>true</skip.unit.tests>
+			</properties>
+		</profile>
+	</profiles>
+	<build>
+		<filters>
+			<filter>profiles/${build.profile.id}/hibernate.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	</build>
+</project>
